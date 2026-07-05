@@ -39,6 +39,14 @@ return {
       },
     }),
 
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      filename: '404.html',
+      templateParameters: {
+        baseHref: publicPath,
+      },
+    }),
+
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
