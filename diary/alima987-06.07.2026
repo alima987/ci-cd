@@ -1,0 +1,23 @@
+# 06.07.2026
+
+## What I worked on
+Started the CI/CD task — needed GitHub Actions for lint, tests, build, and deploy to GitHub Pages.
+
+## What I did
+- Forked the repo and created branch `feature/ci-cd`
+- Added three workflow files: validate on push to `feature/**`, PR checks, deploy to Pages
+- Set `homepage` in package.json to `https://alima987.github.io/ci-cd`
+- Opened PR #1 into `main`
+
+## Where I got stuck
+Not sure at first how deploy should work — the assignment says "GitHub Actions" as Pages source, not "Deploy from a branch". Also confused about `publicPath`: locally it's `/`, but on Pages the app lives under `/ci-cd/`.
+
+## How I worked through it
+Read the task page again and looked at how other RS School projects handle gh-pages. Added `base-path.ts` and `baseHref` in webpack so assets load from the right folder in production.
+
+## Decisions made
+- Used official `deploy-pages` action instead of pushing to `gh-pages` branch — seems like the current recommended way
+- Branch name `feature/ci-cd` matches the assignment table, repo name is just coincidence
+
+## Time spent
+~3 h
