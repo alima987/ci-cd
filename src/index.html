@@ -24,10 +24,10 @@
             <li class="nav__item"><a class="nav__link" href="#promo">Promo code</a></li>
             <li class="nav__item"><a class="nav__link" href="#contacts">Contacts</a></li>
           </ul>
-          <a class="cart" href="/cart">
+          <a class="cart" href="/cart" aria-label="Cart">
             <span class="cart__num" id="header-amount">0</span>
           </a>
-          <div class="total-amount">
+          <div class="total-amount" role="status" aria-label="Total sum">
             <span class="total-amount__value usd-symbol" id="header-sum">0</span>
           </div>
         </nav>
@@ -178,19 +178,19 @@
           <div class="range">
             <div class="range__value">
               <span>min</span>
-              <input type="number" class="input-min" value="1" max="100">
+              <input type="number" class="input-min" value="1" max="100" aria-label="Minimum price">
               <span>$</span>
               <div class="range__separator">-</div>
               <span>max</span>
-              <input type="number" class="input-max" value="100" max="100">
+              <input type="number" class="input-max" value="100" max="100" aria-label="Maximum price">
               <span>$</span>
             </div>
             <div class="range__slider slider">
               <div class="slider__progress"></div>
             </div>
             <div class="range__range-input">
-              <input type="range" class="range-min" min="1" max="106" value="1" step="1">
-              <input type="range" class="range-max" min="1" max="100" value="100" step="1">
+              <input type="range" class="range-min" min="1" max="106" value="1" step="1" aria-label="Minimum price range">
+              <input type="range" class="range-max" min="1" max="100" value="100" step="1" aria-label="Maximum price range">
             </div>
           </div>
         </div>
@@ -234,12 +234,12 @@
           <div class="products__sort-parameters">
             <div class="sort">
               <div class="sort__item">Sort by rating
-                <div data-sort=rating-up class="sort__up sort-control"></div>
-                <div data-sort=rating-down class="sort__down sort-control"></div>
+                <button type="button" data-sort="rating-up" class="sort__up sort-control" aria-label="Sort by rating ascending"></button>
+                <button type="button" data-sort="rating-down" class="sort__down sort-control" aria-label="Sort by rating descending"></button>
               </div>
               <div class="sort__item">Sort by price
-                <div data-sort=price-up class="sort__up sort-control"></div>
-                <div data-sort=price-down class="sort__down sort-control"></div>
+                <button type="button" data-sort="price-up" class="sort__up sort-control" aria-label="Sort by price ascending"></button>
+                <button type="button" data-sort="price-down" class="sort__down sort-control" aria-label="Sort by price descending"></button>
               </div>
             </div>
             <div class="found-products">Found: <div><span class="found-products__num">24</span><span class="found-products__num"> / 24</span></div></div>
@@ -254,10 +254,10 @@
     
         <div class="products__container">Not Found</div>
       </div>
-      <div class="catalog__filter-button filter-button">
+      <button type="button" class="catalog__filter-button filter-button" aria-label="Open filters" aria-expanded="false">
         <span class="filter-button__round"></span>
         <span class="filter-button__stripe"></span>
-      </div>
+      </button>
       <div class="catalog__filter-popup">
       </div>
     </section>
@@ -268,7 +268,7 @@
           <div class="product__photo">
             <div class="product__icons">
               <div class="product__discount"><div class="product__discount-num">20</div><span>%</span></div>
-              <div class="product__rating"><div class="product__rating-num">4.5</div><span>&#9734;</span></div>
+              <div class="product__rating"><div class="product__rating-num">4.5</div><span aria-hidden="true">&#9734;</span></div>
             </div>
           </div>
           <div class="product__info">
@@ -277,7 +277,7 @@
             <p class="product__description"></p>
             <div class="product__purchase">
               <div class="product__price usd-symbol"></div>
-              <button class="product__button button"></button>
+              <button class="product__button button">Add to cart</button>
             </div>
             <div class="product__stock">In stock: <span class="product__stock-num">28</span></div>
           </div>
@@ -359,17 +359,17 @@
               <div class="full-cart-page__pagination">
                 <div class="full-cart-page__pagination-pages">
                   <span class="full-cart-page__pagination-text">Page</span>
-                  <button class="button-arrow" id="paginationPageDown">&lt;</button>
-                  <input class="amount-number" id="paginationCurrentPage" type="number" min="1" max="10" value="1" disabled>
-                  <button class="button-arrow" id="paginationPageUp">&gt;</button>
+                  <button class="button-arrow" id="paginationPageDown" aria-label="Previous page">&lt;</button>
+                  <input class="amount-number" id="paginationCurrentPage" type="number" min="1" max="10" value="1" disabled aria-label="Current page">
+                  <button class="button-arrow" id="paginationPageUp" aria-label="Next page">&gt;</button>
                   <span class="full-cart-page__pagination-text">of</span>
-                  <input class="amount-number" id="pagination-max-pages" type="number" min="1" max="10" value="2" disabled>
+                  <input class="amount-number" id="pagination-max-pages" type="number" min="1" max="10" value="2" disabled aria-label="Total pages">
                 </div>
                 <div class="full-cart-page__pagination-items">
                   <span class="full-cart-page__pagination-text">Items on page:</span>
-                  <button class="button-arrow" id="pagination-items-minus">&lt;</button>
+                  <button class="button-arrow" id="pagination-items-minus" aria-label="Decrease items per page">&lt;</button>
                   <input class="amount-number" id="pagination-items" type="text" disabled>
-                  <button class="button-arrow" id="pagination-items-plus">&gt;</button>
+                  <button class="button-arrow" id="pagination-items-plus" aria-label="Increase items per page">&gt;</button>
                 </div>
               </div>
               <a class="clean-card-btn" href="/cart">Clean cart</a>
@@ -401,9 +401,9 @@
                 <span id="bill-total"></span>
               </p>
             </div>
-            <span class="full-cart-page__buy-button button">
+            <button type="button" class="full-cart-page__buy-button button">
               Proceed to checkout
-            </span>
+            </button>
             <a class="full-cart-page__catalog-button button-light" href="/catalog">
               Continue shopping
             </a>
@@ -447,7 +447,7 @@
         <p class="error-page__text">It's just error 404</p>
         <a class="button error-page__btn" href="/catalog">Go to catalog</a>
       </div>
-      <span class="error-page__smile">:(</span>
+      <span class="error-page__smile" aria-hidden="true">:(</span>
     </section>
   </template>
   <!-- modal -->
@@ -455,19 +455,19 @@
     <div class="purchase-modal__wrapper">
       <form class="purchase-form">
         <h2 class="purchase-form__title">Personal details</h2>
-        <span class="purchase-form__text">Name</span>
-        <input class="purchase-form__input" id="purchaseName" type="text" placeholder="Darya Ivanova">
-        <span class="purchase-form__error" id="purchaseNameError">invalid name entered</span>
-        <span class="purchase-form__text">Phone number</span>
+        <label class="purchase-form__text" for="purchaseName">Name</label>
+        <input class="purchase-form__input" id="purchaseName" type="text" placeholder="Darya Ivanova" aria-describedby="purchaseNameError" aria-invalid="false">
+        <span class="purchase-form__error" id="purchaseNameError" role="alert">invalid name entered</span>
+        <label class="purchase-form__text" for="purchasePhone">Phone number</label>
         <input class="purchase-form__input" id="purchasePhone" type="tel" placeholder="+375 29 851 82 13">
-        <span class="purchase-form__error" id="purchasePhoneError">invalid phone entered</span>
-        <span class="purchase-form__text">Delivery address</span>
+        <span class="purchase-form__error" id="purchasePhoneError" role="alert">invalid phone entered</span>
+        <label class="purchase-form__text" for="purchaseAddress">Delivery address</label>
         <input class="purchase-form__input" id="purchaseAddress" type="text"
           placeholder="Belarus, Minsk, Odintsova">
-        <span class="purchase-form__error" id="purchaseAddressError">invalid address entered</span>
-        <span class="purchase-form__text">Email</span>
+        <span class="purchase-form__error" id="purchaseAddressError" role="alert">invalid address entered</span>
+        <label class="purchase-form__text" for="purchaseEmail">Email</label>
         <input class="purchase-form__input" id="purchaseEmail" type="email" placeholder="ivanova@gmail.com">
-        <span class="purchase-form__error" id="purchaseEmailError">invalid email entered</span>
+        <span class="purchase-form__error" id="purchaseEmailError" role="alert">invalid email entered</span>
         <div class="purchase-form__pay-card">
           <div class="purchase-form__pay-card-header">
             <p class="subtitle">Credit card details</p>
@@ -475,17 +475,17 @@
           </div>
           <span class="purchase-form__text">Card number</span>
           <input class="purchase-form__input" id="payCardNumber" type="text" placeholder="1223 1234 1234 1234">
-          <span class="purchase-form__error" id="payCardNumberError">invalid card number entered</span>
+          <span class="purchase-form__error" id="payCardNumberError" role="alert">invalid card number entered</span>
           <div class="purchase-form__block">
             <div class="purchase-form__date">
               <span class="purchase-form__text">Expiration date</span>
               <input class="purchase-form__input" id="payCardDate" type="text" placeholder="07 / 25">
-              <span class="purchase-form__error" id="payCardDateError">invalid date entered</span>
+              <span class="purchase-form__error" id="payCardDateError" role="alert">invalid date entered</span>
             </div>
             <div class="purchase-form__cvv">
               <span class="purchase-form__text">CVV</span>
               <input class="purchase-form__input" id="payCardCvv" type="number" placeholder="123">
-              <span class="purchase-form__error" id="payCardCvvError">invalid CVV entered</span>
+              <span class="purchase-form__error" id="payCardCvvError" role="alert">invalid CVV entered</span>
             </div>
           </div>
         </div>
