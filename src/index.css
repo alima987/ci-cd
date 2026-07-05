@@ -504,9 +504,6 @@ h2 {
 }
 
 .header__logo {
-  align-items: center;
-  min-height: 48px;
-  padding: 4px 0;
   cursor: pointer;
   margin-top: 40px;
   display: -webkit-box;
@@ -526,6 +523,12 @@ h2 {
   background-color: #186049;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
           box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 20px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px 4px;
+  text-decoration: none;
 }
 
 .header__logo::before {
