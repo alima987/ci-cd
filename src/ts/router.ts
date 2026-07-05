@@ -1,3 +1,4 @@
+import { getAppPathname, toAppPath } from './base/base-path';
 import { PagesList } from './base/enums';
 import { isPlantsId } from './base/helpers';
 import Cart from './components/cart';
@@ -43,7 +44,8 @@ class Router {
   }
 
   static goTo(pageId: string) {
-    window.history.pushState({ pageId }, pageId, pageId);
+    const path = toAppPath(pageId);
+    window.history.pushState({ pageId }, pageId, path);
     Router.render(pageId);
     window.scrollTo(0, 0);
   }
@@ -54,11 +56,13 @@ class Router {
       if (!link.classList.contains('link-changed')) {
         link.addEventListener('click', (e) => {
           e.preventDefault();
-          if (
-            link instanceof HTMLAnchorElement &&
-            (new URL(link.href).pathname !== '/catalog' || new URL(window.location.href).pathname !== '/catalog')
-          ) {
-            Router.goTo(new URL(link.href).pathname);
+          if (link instanceof HTMLAnchorElement) {
+            const linkPath = getAppPathname(new URL(link.href).pathname);
+            const currentPath = getAppPathname(new URL(window.location.href).pathname);
+
+            if (linkPath !== '/catalog' || currentPath !== '/catalog') {
+              Router.goTo(linkPath);
+            }
           }
         });
         link.classList.add('link-changed');
@@ -68,10 +72,9 @@ class Router {
 
   static startRouter() {
     window.addEventListener('popstate', () => {
-      Router.render(new URL(window.location.href).pathname);
+      Router.render(getAppPathname());
     });
-    const page = new URL(window.location.href).pathname;
-    Router.render(page);
+    Router.render(getAppPathname());
   }
 }
 

@@ -9,6 +9,8 @@ const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'ci-cd';
+const publicPath = devMode ? '/' : `/${repoName}/`;
 
 module.exports = {
   mode,
@@ -17,7 +19,7 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath,
     clean: true,
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[name][ext]',
@@ -31,6 +33,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      templateParameters: {
+        baseHref: publicPath,
+      },
     }),
 
     new MiniCssExtractPlugin({

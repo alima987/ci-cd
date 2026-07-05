@@ -2,6 +2,7 @@
   "name": "online-store",
   "version": "1.0.0",
   "description": "online-store",
+  "homepage": "https://alima987.github.io/ci-cd",
   "main": "index.js",
   "scripts": {
   "dev": "webpack serve --mode development --open",
