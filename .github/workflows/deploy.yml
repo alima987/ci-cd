@@ -1,10 +1,8 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   pull_request:
-    branches:
-      - main
-    types: [opened, synchronize, reopened]
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -19,22 +17,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
+          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - run: npm ci
+      - run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
