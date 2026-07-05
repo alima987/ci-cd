@@ -30,8 +30,8 @@ class Router {
         Router.cartPage.draw();
         break;
       case '/':
-        this.goTo(PagesList.catalogPage);
-        break;
+        Router.goTo(PagesList.catalogPage, window.location.hash);
+        return;
       default:
         if (isPlantsId(pathname)) {
           Router.plantPage.draw(pathname.slice(1));
@@ -41,13 +41,53 @@ class Router {
         break;
     }
     Router.changeLinks();
+    Router.handleAnchorLinks();
+    Router.scrollToCurrentHash();
   }
 
-  static goTo(pageId: string) {
+  static goTo(pageId: string, hash = '') {
     const path = toAppPath(pageId);
-    window.history.pushState({ pageId }, pageId, path);
+    const fullPath = `${path}${hash}`;
+    window.history.pushState({ pageId }, pageId, fullPath);
     Router.render(pageId);
+  }
+
+  static scrollToCurrentHash() {
+    const { hash } = window.location;
+
+    if (hash) {
+      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
     window.scrollTo(0, 0);
+  }
+
+  static handleAnchorLinks() {
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach((link) => {
+      if (!link.classList.contains('anchor-changed')) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          if (!(link instanceof HTMLAnchorElement)) {
+            return;
+          }
+
+          const hash = link.getAttribute('href');
+
+          if (!hash) {
+            return;
+          }
+
+          const url = `${window.location.pathname}${window.location.search}${hash}`;
+          window.history.pushState(window.history.state, '', url);
+          document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+        });
+        link.classList.add('anchor-changed');
+      }
+    });
   }
 
   static changeLinks() {

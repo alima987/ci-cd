@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -26,6 +28,8 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          NODE_ENV: production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
