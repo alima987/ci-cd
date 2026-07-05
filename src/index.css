@@ -504,6 +504,9 @@ h2 {
 }
 
 .header__logo {
+  align-items: center;
+  min-height: 48px;
+  padding: 4px 0;
   cursor: pointer;
   margin-top: 40px;
   display: -webkit-box;
@@ -586,6 +589,11 @@ h2 {
 }
 
 .nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 12px 8px;
+  font-size: 16px;
   color: #909090;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -958,6 +966,15 @@ h2 {
 
 .footer__item a {
   color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 4px;
+}
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .button {
@@ -1112,6 +1129,13 @@ h2 {
   color: #CDCDCD;
   -webkit-transition: .3s;
   transition: .3s;
+}
+
+.link-navigation__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 4px 6px;
 }
 
 .link-navigation__link:hover {
