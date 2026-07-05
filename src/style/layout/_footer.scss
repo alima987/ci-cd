@@ -7,7 +7,7 @@
 .footer {
   width: 100%;
   position: relative;
-  background-color: variables.$green-light;
+  background-color: variables.$green-dark;
   color: variables.$white-medium;
 }
 
@@ -30,5 +30,15 @@
 }
 
 .footer__item a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 4px;
   color: variables.$white-medium;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }

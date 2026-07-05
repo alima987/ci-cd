@@ -5,19 +5,22 @@ const EslintPlugin = require('eslint-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const mode = process.env.NODE_ENV || 'development';
-const devMode = mode === 'development';
+module.exports = (env, argv) => {
+const mode = argv.mode || process.env.NODE_ENV || 'development';
+const devMode = mode !== 'production';
 const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'ci-cd';
+const publicPath = devMode ? '/' : `/${repoName}/`;
 
-module.exports = {
+return {
   mode,
   target,
   devtool,
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath,
     clean: true,
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[name][ext]',
@@ -31,6 +34,17 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      templateParameters: {
+        baseHref: publicPath,
+      },
+    }),
+
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      filename: '404.html',
+      templateParameters: {
+        baseHref: publicPath,
+      },
     }),
 
     new MiniCssExtractPlugin({
@@ -53,6 +67,7 @@ module.exports = {
     rules: [
       {
         test: /\.html$/i,
+        exclude: [path.resolve(__dirname, 'src/index.html')],
         loader: 'html-loader',
       },
       {
@@ -122,4 +137,5 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
   },
+};
 };

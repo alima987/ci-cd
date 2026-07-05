@@ -1,3 +1,4 @@
+import { getAppPathname } from '../base/base-path';
 import { getExistentElement, openPurchaseModal } from '../base/helpers';
 import { promoList } from '../base/promo-codes';
 import Cart from '../components/cart';
@@ -118,7 +119,7 @@ class CartPage extends Page {
 
   private setQuery() {
     const currentUrl = new URL(window.location.href);
-    if (currentUrl.pathname !== PagesList.cartPage) return;
+    if (getAppPathname(currentUrl.pathname) !== PagesList.cartPage) return;
     currentUrl.searchParams.set('cart', JSON.stringify(this.cart));
     currentUrl.searchParams.set('pageInfo', JSON.stringify(this.pageInfo));
     window.history.replaceState({}, currentUrl.toString(), currentUrl);

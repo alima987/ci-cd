@@ -51,7 +51,7 @@
   justify-content: center;
   width: 140px;
   height: 40px;
-  background-color: variables.$purple-medium;
+  background-color: variables.$purple-dark;
   color: variables.$white-medium;
   border-radius: 20px;
   border: none;
@@ -60,7 +60,7 @@
 
   &:hover,
   &:active {
-    background-color: variables.$purple-light;
+    background-color: variables.$purple-darker;
     color: variables.$white-medium;
     text-decoration: none;
   }
