@@ -20,9 +20,9 @@
         </a>
         <nav class="nav">
           <ul class="nav__list">
-            <li class="nav__item"><a class="header__logo" href="/catalog">Catalog</a></li>
-            <li class="nav__item"><a class="header__logo" href="#promo">Promo code</a></li>
-            <li class="nav__item"><a class="header__logo" href="#contacts">Contacts</a></li>
+            <li class="nav__item"><a class="nav__link" href="/catalog">Catalog</a></li>
+            <li class="nav__item"><a class="nav__link" href="#promo">Promo code</a></li>
+            <li class="nav__item"><a class="nav__link" href="#contacts">Contacts</a></li>
           </ul>
           <a class="cart" href="/cart" aria-label="Cart">
             <span class="cart__num" id="header-amount">0</span>
@@ -89,7 +89,8 @@
   <!-- catalog page -->
   <template id="catalog">
     <section id="catalog" class="catalog page">
-    
+      <h2 class="visually-hidden">Catalog</h2>
+
       <div class="filter">
         <div class="filter__type">
           <h3 class="filter__title">Category</h3>
@@ -208,17 +209,17 @@
           <div class="range">
             <div class="range__value">
               <span>min</span>
-              <input type="number" class="input-min" value="1" max="65">
+              <input type="number" class="input-min" value="1" max="65" aria-label="Minimum stock">
               <div class="range__separator">-</div>
               <span>max</span>
-              <input type="number" class="input-max" value="65" max="65">
+              <input type="number" class="input-max" value="65" max="65" aria-label="Maximum stock">
             </div>
             <div class="range__slider slider">
               <div class="slider__progress"></div>
             </div>
             <div class="range__range-input">
-              <input type="range" class="range-min" min="1" max="69" value="1" step="1">
-              <input type="range" class="range-max" min="1" max="65" value="65" step="1">
+              <input type="range" class="range-min" min="1" max="69" value="1" step="1" aria-label="Minimum stock range">
+              <input type="range" class="range-max" min="1" max="65" value="65" step="1" aria-label="Maximum stock range">
             </div>
           </div>
         </div>
@@ -368,7 +369,7 @@
                 <div class="full-cart-page__pagination-items">
                   <span class="full-cart-page__pagination-text">Items on page:</span>
                   <button class="button-arrow" id="pagination-items-minus" aria-label="Decrease items per page">&lt;</button>
-                  <input class="amount-number" id="pagination-items" type="text" disabled>
+                  <input class="amount-number" id="pagination-items" type="text" disabled aria-label="Items per page">
                   <button class="button-arrow" id="pagination-items-plus" aria-label="Increase items per page">&gt;</button>
                 </div>
               </div>
@@ -380,7 +381,8 @@
           </div>
           <div class="full-cart-page__panel" id="bill">
             <div class="full-cart-page__promo">
-              <input class="full-cart-page__promo-input" type="text" placeholder="PROMO CODE">
+              <label class="visually-hidden" for="promoCodeInput">Promo code</label>
+              <input id="promoCodeInput" class="full-cart-page__promo-input" type="text" placeholder="PROMO CODE">
             </div>
             <div class="full-cart-page__info">
               <p class="full-cart-page__subtitle subtitle">
@@ -431,7 +433,7 @@
                   <span class="product__old-price"></span>
                   <div class="product__amount">
                     <button class="button-arrow product__left-arrow">&lt;</button>
-                    <input class="product__amount-number amount-number" type="number" min="0" value="1" disabled>
+                    <input class="product__amount-number amount-number" type="number" min="0" value="1" disabled aria-label="Item quantity">
                     <button class="button-arrow product__right-arrow">&gt;</button>
                   </div>
                 </div>
@@ -473,18 +475,18 @@
             <p class="subtitle">Credit card details</p>
             <div class="purchase-form__card-icon"></div>
           </div>
-          <span class="purchase-form__text">Card number</span>
-          <input class="purchase-form__input" id="payCardNumber" type="text" placeholder="1223 1234 1234 1234">
+          <label class="purchase-form__text" for="payCardNumber">Card number</label>
+          <input class="purchase-form__input" id="payCardNumber" type="text" placeholder="1223 1234 1234 1234" aria-describedby="payCardNumberError" aria-invalid="false">
           <span class="purchase-form__error" id="payCardNumberError" role="alert">invalid card number entered</span>
           <div class="purchase-form__block">
             <div class="purchase-form__date">
               <span class="purchase-form__text">Expiration date</span>
-              <input class="purchase-form__input" id="payCardDate" type="text" placeholder="07 / 25">
+              <input class="purchase-form__input" id="payCardDate" type="text" placeholder="07 / 25" aria-describedby="payCardDateError" aria-invalid="false">
               <span class="purchase-form__error" id="payCardDateError" role="alert">invalid date entered</span>
             </div>
             <div class="purchase-form__cvv">
               <span class="purchase-form__text">CVV</span>
-              <input class="purchase-form__input" id="payCardCvv" type="number" placeholder="123">
+              <input class="purchase-form__input" id="payCardCvv" type="number" placeholder="123" aria-describedby="payCardCvvError" aria-invalid="false">
               <span class="purchase-form__error" id="payCardCvvError" role="alert">invalid CVV entered</span>
             </div>
           </div>

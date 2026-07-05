@@ -8,6 +8,7 @@
 
   &__item {
     @include mixins.flexbox();
+    gap: 8px;
     margin-right: 10px;
 
     @media (max-width: 600px) {
@@ -17,22 +18,36 @@
 
   &__up,
   &__down {
-    width: 18px;
-    height: 18px;
-    background: url('assets/svg/up.svg') center center/contain no-repeat;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background: url('assets/svg/up.svg') center center/24px no-repeat;
     opacity: 0.3;
     cursor: pointer;
     transition: 0.5s;
-    &:hover {
+
+    &:hover,
+    &:active {
       opacity: 1;
     }
   }
 
   &__down {
     transform: rotate(180deg);
-    margin-left: -2px;
-    background: url('assets/svg/up.svg') center center/contain no-repeat;
+    margin-left: 0;
+    background: url('assets/svg/up.svg') center center/24px no-repeat;
   }
+}
+
+.sort-control {
+  font: inherit;
 }
 
 .found-products {

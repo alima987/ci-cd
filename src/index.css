@@ -597,7 +597,7 @@ h2 {
   min-height: 48px;
   padding: 12px 8px;
   font-size: 16px;
-  color: #909090;
+  color: #707070;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -941,7 +941,7 @@ h2 {
 .footer {
   width: 100%;
   position: relative;
-  background-color: #2F8569;
+  background-color: #186049;
   color: #FFFFFF;
 }
 
@@ -1050,7 +1050,7 @@ h2 {
           justify-content: center;
   width: 140px;
   height: 40px;
-  background-color: #ab5abb;
+  background-color: #96449f;
   color: #FFFFFF;
   border-radius: 20px;
   border: none;
@@ -1209,7 +1209,7 @@ h2 {
 }
 
 .product__discount {
-  background-color: #ab5abb;
+  background-color: #96449f;
 }
 
 .product__discount span {
@@ -1227,7 +1227,7 @@ h2 {
 }
 
 .product__type {
-  color: #89c1b0;
+  color: #22795D;
 }
 
 .product__title {
@@ -1266,7 +1266,7 @@ h2 {
 .product__stock {
   margin-top: 5px;
   margin-right: 10px;
-  color: #89c1b0;
+  color: #22795D;
   font-size: 0.8em;
   text-align: right;
 }
@@ -1427,15 +1427,19 @@ h2 {
       -ms-flex-align: center;
           align-items: center;
   margin-right: 10px;
+  gap: 8px;
 }
 
 .sort__up, .sort__down {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   background: url("assets/svg/up.svg") center center/contain no-repeat;
   opacity: 0.3;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  padding: 8px;
+  box-sizing: content-box;
+  background-size: 24px; 
 }
 
 .sort__up:hover, .sort__up:active, .sort__down:hover, .sort__down:active {
@@ -2291,5 +2295,12 @@ h2.error-page__title {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 30px;
+}
+
+.sort-control, .layout__portrait, .layout__landscape {
+    border: none;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    font: inherit;
 }
 /*# sourceMappingURL=index.css.map */

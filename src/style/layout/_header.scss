@@ -135,6 +135,11 @@
   }
 
   &__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 12px 8px;
+    font-size: 16px;
     color: variables.$grey-dark;
     transition: 0.5s;
 
